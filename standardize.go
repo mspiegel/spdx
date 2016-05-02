@@ -79,7 +79,7 @@ func removeMultispace(s string) string {
 
 // 4.1.1 Guideline: All upper case and lower case letters should be
 // treated as lower case letters.
-func removeUppercase(s string) string {
+func replaceUppercase(s string) string {
   return strings.ToLower(s)
 }
 
@@ -105,5 +105,5 @@ func standardVarietals(s string) string {
   return s
 }
 
-var Standardize = compose(removeMultispace, removeUppercase,
+var Standardize = compose(removeMultispace, replaceUppercase,
   standardQuotes, standardDashes,standardVarietals)

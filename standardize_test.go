@@ -12,9 +12,9 @@ func TestRemoveMultispace(t *testing.T) {
   assert.Equal(t, "a b", removeMultispace("a     b"))
 }
 
-func TestRemoveUppercase(t *testing.T) {
-  assert.Equal(t, "", removeUppercase(""))
-  assert.Equal(t, "abc", removeUppercase("ABC"))
+func TestReplaceUppercase(t *testing.T) {
+  assert.Equal(t, "", replaceUppercase(""))
+  assert.Equal(t, "abc", replaceUppercase("ABC"))
 }
 
 func TestStandardQuotes(t *testing.T) {
@@ -46,5 +46,6 @@ func TestStandardVarietals(t *testing.T) {
 }
 
 func TestStandardize(t *testing.T) {
-  assert.Equal(t, "center offense", Standardize("centre  OFFENCE"))  
+  assert.Equal(t, "", Standardize(""))
+  assert.Equal(t, "center offense", Standardize("centre  OFFENCE"))
 }
