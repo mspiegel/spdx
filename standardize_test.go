@@ -44,3 +44,7 @@ func TestStandardVarietals(t *testing.T) {
   assert.Equal(t, "center center", standardVarietals("centre centre"))
   assert.Equal(t, "center offense", standardVarietals("centre offence"))
 }
+
+func TestStandardize(t *testing.T) {
+  assert.Equal(t, "center offense", Standardize("centre  OFFENCE"))  
+}

@@ -5,6 +5,25 @@ import (
   "strings"
 )
 
+type strFunc func(s string) string
+
+func compose2(a strFunc, b strFunc) strFunc {
+	return func(s string) string {
+		return b(a(s))
+	}
+}
+
+func compose(fns ...strFunc) strFunc {
+	return func(s string) string {
+		var res strFunc
+		res = fns[0]
+		for i := 1; i < len(fns); i++ {
+			res = compose2(res, fns[i])
+		}
+		return res(s)
+	}
+}
+
 // Refer to SPDX License List Matching Guidelines, v2.0
 // http://spdx.org/spdx-license-list/matching-guidelines
 
@@ -104,3 +123,6 @@ func standardVarietals(s string) string {
   }
   return s
 }
+
+var Standardize = compose(removeMultispace, removeUppercase,
+  standardQuotes, standardDashes,standardVarietals)
